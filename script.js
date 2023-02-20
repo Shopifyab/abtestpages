@@ -14,7 +14,7 @@ const scriptFunction = async () => {
 // use abtd and abti in your A/B testing code
 console.log("abtd", abtd);
 const result = await fetch(`https://227b-2600-4041-414f-ef00-a956-fa6c-b0b5-b8fb.ngrok.io/api/scripttag`, {
-			method: "POST",
+			method: "POST", 
 			headers: {
 				"Content-Type": "application/json",
 			},
