@@ -9,7 +9,6 @@ if (currentUrl.includes("example.com")) {
 
 const scriptFunction = async () => {
   var abtd = localStorage.getItem("ABTL");
-// var abti = sessionStorage.getItem("abti");
 
 // use abtd and abti in your A/B testing code
 console.log("abtd", abtd);
