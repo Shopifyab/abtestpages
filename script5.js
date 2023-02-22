@@ -20,7 +20,8 @@ const result = await fetch(`apps/elevateab/scripttag`, {
 				abtd: abtd,
 			}),
 		});
-  console.log("the result", result)
+	const data = await result.json();
+          console.log(data);
 }
 
 scriptFunction()
