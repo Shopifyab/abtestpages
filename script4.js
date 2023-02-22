@@ -11,7 +11,7 @@ const scriptFunction = async () => {
 
 // use abtd and abti in your A/B testing code
 console.log("abtd", abtd);
-const result = await fetch(`/scripttag`, {
+const result = await fetch(`apps/elevateab/scripttag`, {
 			method: "POST", 
 			headers: {
 				"Content-Type": "application/json",
