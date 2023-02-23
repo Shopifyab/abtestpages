@@ -22,7 +22,7 @@ const result = await fetch(`https://${window.Shopify.shop}/apps/elevateab/script
 		});
 	const data = await result.json();
           console.log(data.data);
-	if(data.data === "url"){
+	if(data.data === "url" && window.location.href != 'https://development-store1221.myshopify.com/products/ocean-blue-shirt'){
 		console.log("its a match")
 			window.location.href = 'https://development-store1221.myshopify.com/products/ocean-blue-shirt'
 
