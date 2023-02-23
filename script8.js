@@ -24,6 +24,8 @@ const result = await fetch(`https://${window.Shopify.shop}/apps/elevateab/script
           console.log(data.data);
 	if(data.data === "url"){
 		console.log("its a match")
+			window.location.href = 'https://development-store1221.myshopify.com/products/ocean-blue-shirt'
+
 	}
 }
 
