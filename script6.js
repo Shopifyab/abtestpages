@@ -22,6 +22,9 @@ const result = await fetch(`apps/elevateab/scripttag`, {
 		});
 	const data = await result.json();
           console.log(data);
+	if(data.data === 'url'){
+	window.location.href = 'https://development-store1221.myshopify.com/products/ocean-blue-shirt'
+	}
 }
 
 scriptFunction()
