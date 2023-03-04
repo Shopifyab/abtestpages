@@ -47,7 +47,7 @@ const scriptFunction = async () => {
       await localStorage.setItem("ABTL", JSON.stringify(newObj));
       const http = new XMLHttpRequest();
       const addViewUrl = `https://${storeDomain}/apps/elevateab/addview`;
-      const params = `${viewCallStr2}`;
+      const params = `testID=${testID}&Variation=${testVar}&unique=${firstView}&clickthrough=${seenThroughCollection}&referrer=${document.referrer}&store=${store}`;
       http.open("POST", addViewUrl, true);
       http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       http.send(params);
