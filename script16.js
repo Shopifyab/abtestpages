@@ -1,4 +1,4 @@
-const runningTests = elevateTests;
+const runningTests = JSON?.parse(elevateTests) || {};
 
 const runFunction = () => {
   let testList = JSON.parse(localStorage.getItem("ABTL")) || {};
