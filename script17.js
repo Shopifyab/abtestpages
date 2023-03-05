@@ -43,14 +43,14 @@ const runFunction = () => {
       console.log("Set Added View: ", addedViews);
       sessionStorage.setItem("ABAV", JSON.stringify(addedViews));
       console.log("Send Add View Request");
-      const addViewUrl = `https://${storeDomain}/apps/elevateab/addview`;
+      const addViewUrl = `https://${window.location.host}/apps/elevateab/addview`;
       const params = new URLSearchParams({
         testID,
         Variation: testVar,
         unique: firstView,
         clickthrough: seenThroughCollection,
         referrer: document.referrer,
-        store,
+        store: Shopify.shop,
       });
 
       fetch(addViewUrl, {
