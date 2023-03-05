@@ -59,7 +59,7 @@ const runFunction = () => {
         body: params.toString(),
       });
     }
-
+    paramsLine = paramsLine ? paramsLine + '&abtr=true' : paramsLine + 'abtr=true'
     window.location.href = runningTests[testID][testVar] + "?" + paramsLine;
   };
 
@@ -94,7 +94,7 @@ const runFunction = () => {
         (key) => runningTests[key] === matchingUrl
       );
 
-  if (testID && !addedViews?.[testID]) {
+  if (testID && !params.abtr) {
     const unique = !testList || !testList[testID];
     handleTest({ testID, unique });
   }
