@@ -94,7 +94,7 @@ const runFunction = () => {
         (key) => runningTests[key] === matchingUrl
       );
 
-  if (testID && !paramsLine?.abtr) {
+  if (testID && !paramsLine.includes('abtr')) {
     const unique = !testList || !testList[testID];
     handleTest({ testID, unique });
   }
