@@ -13,7 +13,7 @@ const runFunction = () => {
 
   const url = new URL(window.location.href);
   const [hrefUrl] = url.href.split("?");
-  const paramsLine = getParams(window.location.href) || "";
+  let paramsLine = getParams(window.location.href) || "";
 
   const handleTest = async ({ testID, unique }) => {
     const newObj = testList || {};
