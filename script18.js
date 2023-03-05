@@ -60,8 +60,7 @@ const runFunction = () => {
       });
     }
 
-    const redirectURL = runningTests[testID][testVar] + "?" + paramsLine;
-    console.log("Redirecting url: ", redirectURL);
+    window.location.href = runningTests[testID][testVar] + "?" + paramsLine;
   };
 
   const handleDecideTests = async (tests) => {
