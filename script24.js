@@ -98,7 +98,7 @@ const runFunction = () => {
     const unique = !testList || !testList[testID];
     handleTest({ testID, unique });
   } else {
-  console.log("the elevate selectors", elevateSelectors)
+  console.log("the elevate selectors", selectors)
   }
 
 }
