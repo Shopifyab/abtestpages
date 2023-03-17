@@ -1,5 +1,5 @@
 const runningTests = JSON?.parse(elevateTests) || {};
-
+const selectors = JSON?.parse(elevateSelectors) || {};
 const runFunction = () => {
   let testList = JSON.parse(localStorage.getItem("ABTL")) || {};
   let collectionsList = JSON.parse(sessionStorage.getItem("ABCL")) || {};
@@ -97,6 +97,8 @@ const runFunction = () => {
   if (testID && !paramsLine.includes('abtr')) {
     const unique = !testList || !testList[testID];
     handleTest({ testID, unique });
+  } else {
+  console.log("the elevate selectors", elevateSelectors)
   }
 
 }
