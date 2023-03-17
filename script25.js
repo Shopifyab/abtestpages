@@ -1,6 +1,7 @@
 const runningTests = JSON?.parse(elevateTests) || {};
 const selectors = JSON?.parse(elevateSelectors) || {};
 const runFunction = () => {
+  console.log("in run")
   let testList = JSON.parse(localStorage.getItem("ABTL")) || {};
   let collectionsList = JSON.parse(sessionStorage.getItem("ABCL")) || {};
   let addedViews = JSON.parse(sessionStorage.getItem("ABAV")) || {};
