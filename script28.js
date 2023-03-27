@@ -135,6 +135,7 @@ const runFunction = () => {
 
 }else {
  document.addEventListener('DOMContentLoaded', function() {
+    console.log("contentloaded")
   updateElements()
 });
 // document.addEventListener('DOMContentLoaded', function() {
@@ -223,6 +224,7 @@ function formatCurrency(value, currency) {
 }
 
 function updateElements() {
+   console.log("in updateelemtns")
       if (selectors.hasOwnProperty(currentPage)) {
 
   const tests = selectors[currentPage];
