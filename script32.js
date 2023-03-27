@@ -22,6 +22,15 @@ const pageMap = {
   '^/about-us$': 'about_us_page',
   '^/faq$': 'faq_page',
 };
+console.log("running1")
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("in content dom")
+  updateElements();
+  setupHistoryProxy();
+
+})
+
 
 const currentPage = Object.entries(pageMap).find(([key]) => new RegExp(key).test(path))?.[1] || 'unknown_page';
 const currentPageFormatted = currentPage.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -37,11 +46,15 @@ const urlParams = new URLSearchParams(window.location.search);
   const testID = urlParams.get("abtid") || localStorage.getItem('abtid');
 
   const abWidget = urlParams.get("abwidget") === 'true' || sessionStorage.getItem('abwidget') === 'true' || false;
-const runFunction = () => {
+// const runFunction = () => {
   let collectionsList = JSON.parse(sessionStorage.getItem("ABCL")) || {};
   let addedViews = JSON.parse(sessionStorage.getItem("ABAV")) || {};
   let addedUniqueViews = JSON.parse(localStorage.getItem("ABAU")) || {};
 
+  const url = new URL(window.location.href);
+  const [hrefUrl] = url.href.split("?");
+  let paramsLine = getParams(window.location.href) || "";
+    const searchParams = new URLSearchParams(url.search);
 
   function setupHistoryProxy() {
     const originalHistory = window.history;
@@ -67,22 +80,12 @@ const runFunction = () => {
     window.history.replaceState = replaceStateProxy;
   }
 
-  window.addEventListener('load', function() {
-    console.log("in content dom")
-    updateElements();
-    setupHistoryProxy();
-  
-  })
-
+ 
   function getParams(url) {
     const parser = new URL(url);
     return parser.search.slice(1);
   }
 
-  const url = new URL(window.location.href);
-  const [hrefUrl] = url.href.split("?");
-  let paramsLine = getParams(window.location.href) || "";
-    const searchParams = new URLSearchParams(url.search);
 
   const handleTest = async ({ testID, unique }) => {
     const newObj = testList || {};
@@ -330,8 +333,8 @@ checkCartItemsInNestedObject(runningTests)
 
 
 
-}
-runFunction()
+// }
+// runFunction()
 
 
 
