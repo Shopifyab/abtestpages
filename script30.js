@@ -42,6 +42,38 @@ const runFunction = () => {
   let addedViews = JSON.parse(sessionStorage.getItem("ABAV")) || {};
   let addedUniqueViews = JSON.parse(localStorage.getItem("ABAU")) || {};
 
+
+  function setupHistoryProxy() {
+    const originalHistory = window.history;
+  
+    // Handler object for the Proxy
+    const handler = {
+      apply(target, thisArg, argumentsList) {
+        const result = Reflect.apply(...arguments);
+        setTimeout(() => {
+        updateElements();
+          
+        }, 1000)
+        return result;
+      },
+    };
+  
+    // Create the Proxy for pushState and replaceState methods
+    const pushStateProxy = new Proxy(originalHistory.pushState, handler);
+    const replaceStateProxy = new Proxy(originalHistory.replaceState, handler);
+  
+    // Replace the original methods with the Proxy versions
+    window.history.pushState = pushStateProxy;
+    window.history.replaceState = replaceStateProxy;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log("in content dom")
+    updateElements();
+    setupHistoryProxy();
+  
+  })
+
   function getParams(url) {
     const parser = new URL(url);
     return parser.search.slice(1);
@@ -53,7 +85,6 @@ const runFunction = () => {
     const searchParams = new URLSearchParams(url.search);
 
   const handleTest = async ({ testID, unique }) => {
-    console.log("in start")
     const newObj = testList || {};
     const testVar = unique
       ? Object.keys(runningTests[testID])[
@@ -111,9 +142,10 @@ const runFunction = () => {
 };
 
   let onStart = () => {
-        console.log("in real start")
-
     let missingTests = [];
+if (searchParams.has("abtp")) {
+  const abtpValue = searchParams.get("abtp");
+}
     for (let item in runningTests) {
       if (!testList?.[item]) {
         missingTests.push(item);
@@ -136,49 +168,7 @@ const runFunction = () => {
     handleTest({ testID, unique });
   } 
 
-}else {
-          console.log("in real start else")
-
- document.addEventListener('DOMContentLoaded', function() {
-    console.log("contentloaded")
-  updateElements()
-});
-// document.addEventListener('DOMContentLoaded', function() {
-//   updateElements()
-
-// })
-function setupHistoryProxy() {
-  const originalHistory = window.history;
-
-  // Handler object for the Proxy
-  const handler = {
-    apply(target, thisArg, argumentsList) {
-      const result = Reflect.apply(...arguments);
-      setTimeout(() => {
-      updateElements();
-        
-      }, 1000)
-      return result;
-    },
-  };
-
-  // Create the Proxy for pushState and replaceState methods
-  const pushStateProxy = new Proxy(originalHistory.pushState, handler);
-  const replaceStateProxy = new Proxy(originalHistory.replaceState, handler);
-
-  // Replace the original methods with the Proxy versions
-  window.history.pushState = pushStateProxy;
-  window.history.replaceState = replaceStateProxy;
 }
-
-// Set up the history Proxy when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  setupHistoryProxy();
-});
-
-
-      
-  }
 
   }
   if (paramsLine != "control") {
@@ -229,7 +219,6 @@ function formatCurrency(value, currency) {
 }
 
 function updateElements() {
-   console.log("in updateelemtns")
       if (selectors.hasOwnProperty(currentPage)) {
 
   const tests = selectors[currentPage];
