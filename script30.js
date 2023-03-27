@@ -67,7 +67,7 @@ const runFunction = () => {
     window.history.replaceState = replaceStateProxy;
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('load', function() {
     console.log("in content dom")
     updateElements();
     setupHistoryProxy();
