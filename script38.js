@@ -25,20 +25,7 @@ const pageMap = {
 console.log("running1")
 
 
-if (document.readyState === 'complete') {
-  // Page has already finished loading, so run the code immediately
-  console.log('The page has already finished loading!');
-  updateElements();
-  setupHistoryProxy();
-  // Call any other functions or code that needs to run after the page has finished loading
-} else {
-  // Page has not finished loading, so add an event listener to wait for the load event
-  window.addEventListener('load', function() {
-    console.log("in onload");
-    updateElements();
-    setupHistoryProxy();
-  });
-}
+
 
 
 
@@ -91,6 +78,20 @@ const urlParams = new URLSearchParams(window.location.search);
     window.history.replaceState = replaceStateProxy;
   }
 
+  if (document.readyState === 'complete') {
+    // Page has already finished loading, so run the code immediately
+    console.log('The page has already finished loading!');
+    updateElements();
+    setupHistoryProxy();
+    // Call any other functions or code that needs to run after the page has finished loading
+  } else {
+    // Page has not finished loading, so add an event listener to wait for the load event
+    window.addEventListener('load', function() {
+      console.log("in onload");
+      updateElements();
+      setupHistoryProxy();
+    });
+  }
  
   function getParams(url) {
     const parser = new URL(url);
