@@ -54,7 +54,6 @@ const urlParams = new URLSearchParams(window.location.search);
   const currUrl = new URL(window.location.href);
   const [hrefUrl] = currUrl.href.split("?");
   let paramsLine = getParams(window.location.href) || "";
-    const searchParams = new URLSearchParams(currUrl.search);
 
   function setupHistoryProxy() {
     const originalHistory = window.history;
@@ -146,9 +145,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
   let onStart = () => {
     let missingTests = [];
-if (searchParams.has("abtp")) {
-  const abtpValue = searchParams.get("abtp");
-}
+
     for (let item in runningTests) {
       if (!testList?.[item]) {
         missingTests.push(item);
