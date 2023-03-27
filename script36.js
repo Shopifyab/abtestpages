@@ -24,11 +24,13 @@ const pageMap = {
 };
 console.log("running1")
 
-window.onload = function() {
+
+
+window.addEventListener('load', function() {
   console.log("in onload");
   updateElements();
   setupHistoryProxy();
-};
+});
 
 
 const currentPage = Object.entries(pageMap).find(([key]) => new RegExp(key).test(path))?.[1] || 'unknown_page';
