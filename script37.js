@@ -25,12 +25,23 @@ const pageMap = {
 console.log("running1")
 
 
-
-window.addEventListener('load', function() {
-  console.log("in onload");
+if (document.readyState === 'complete') {
+  // Page has already finished loading, so run the code immediately
+  console.log('The page has already finished loading!');
   updateElements();
   setupHistoryProxy();
-});
+  // Call any other functions or code that needs to run after the page has finished loading
+} else {
+  // Page has not finished loading, so add an event listener to wait for the load event
+  window.addEventListener('load', function() {
+    console.log("in onload");
+    updateElements();
+    setupHistoryProxy();
+  });
+}
+
+
+
 
 
 const currentPage = Object.entries(pageMap).find(([key]) => new RegExp(key).test(path))?.[1] || 'unknown_page';
