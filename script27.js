@@ -111,9 +111,6 @@ const runFunction = () => {
 
   let onStart = () => {
     let missingTests = [];
-if (searchParams.has("abtp")) {
-  const abtpValue = searchParams.get("abtp");
-}
     for (let item in runningTests) {
       if (!testList?.[item]) {
         missingTests.push(item);
@@ -137,10 +134,13 @@ if (searchParams.has("abtp")) {
   } 
 
 }else {
-document.addEventListener('DOMContentLoaded', function() {
+  window.onload = function() {
   updateElements()
+};
+// document.addEventListener('DOMContentLoaded', function() {
+//   updateElements()
 
-})
+// })
 function setupHistoryProxy() {
   const originalHistory = window.history;
 
