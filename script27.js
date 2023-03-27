@@ -134,9 +134,9 @@ const runFunction = () => {
   } 
 
 }else {
-  window.onload = function() {
+ document.addEventListener('DOMContentLoaded', function() {
   updateElements()
-};
+});
 // document.addEventListener('DOMContentLoaded', function() {
 //   updateElements()
 
