@@ -51,10 +51,10 @@ const urlParams = new URLSearchParams(window.location.search);
   let addedViews = JSON.parse(sessionStorage.getItem("ABAV")) || {};
   let addedUniqueViews = JSON.parse(localStorage.getItem("ABAU")) || {};
 
-  const url = new URL(window.location.href);
-  const [hrefUrl] = url.href.split("?");
+  const currUrl = new URL(window.location.href);
+  const [hrefUrl] = currUrl.href.split("?");
   let paramsLine = getParams(window.location.href) || "";
-    const searchParams = new URLSearchParams(url.search);
+    const searchParams = new URLSearchParams(currUrl.search);
 
   function setupHistoryProxy() {
     const originalHistory = window.history;
