@@ -53,6 +53,7 @@ const runFunction = () => {
     const searchParams = new URLSearchParams(url.search);
 
   const handleTest = async ({ testID, unique }) => {
+    console.log("in start")
     const newObj = testList || {};
     const testVar = unique
       ? Object.keys(runningTests[testID])[
@@ -110,6 +111,8 @@ const runFunction = () => {
 };
 
   let onStart = () => {
+        console.log("in real start")
+
     let missingTests = [];
     for (let item in runningTests) {
       if (!testList?.[item]) {
@@ -134,6 +137,8 @@ const runFunction = () => {
   } 
 
 }else {
+          console.log("in real start else")
+
  document.addEventListener('DOMContentLoaded', function() {
     console.log("contentloaded")
   updateElements()
