@@ -23,7 +23,15 @@ const pageMap = {
   '^/faq$': 'faq_page',
 };
 console.log("running1")
-
+const searchParams = new URLSearchParams(window.location.search);
+const abtidValue = searchParams.get("abtid");
+const runningTests = Object.fromEntries(
+	Object.entries(allTests).filter(
+		([key, value]) =>
+			key === abtidValue || (key !== abtidValue && value?.data?.isLive)
+	)
+);
+let testList = JSON.parse(localStorage.getItem("ABTL")) || {};
 
 
 
