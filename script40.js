@@ -407,7 +407,7 @@ widget.style.boxShadow = "0px 15px 30px rgba(0, 0, 0, 0.15)";
 
     const pageHeader = document.createElement("div");
 pageHeader.id = "page-preview";
-pageHeader.textContent = `Test: ${runningTests[testID].data.name}`;
+pageHeader.textContent = `Test: ${runningTests[testID]?.data?.name}`;
 pageHeader.style.backgroundColor = "#F7F9FD";
 pageHeader.style.padding = "5px 15px";
 pageHeader.style.borderRadius = "10px 10px 0px 0px";
